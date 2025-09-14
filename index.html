@@ -14,74 +14,35 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
+    body {
       background-color: #f5f0e6;
       color: #3b2f2f;
       font-family: 'Open Sans', sans-serif;
       line-height: 1.6;
-      padding: 0 15px;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      border: 2px solid #d4af37;
-      border-radius: 8px;
-      padding: 8px 16px;
-      display: inline-block;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 0px transparent;
-    }
-
-    h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
-      background-color: rgba(212, 175, 55, 0.05);
+      padding: 0 5vw;
     }
 
     .header {
       text-align: center;
-      padding: 20px 0;
-      background-color: #f5f0e6;
+      padding: 30px 0;
       border-bottom: 1px solid #d4af37;
     }
 
     .titulo-dorado {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      background: linear-gradient(90deg, #00cfff, #bcf7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 2.8rem;
       position: relative;
-      animation: deslizar 1.5s ease-out forwards;
-      opacity: 0;
+      color: transparent;
+      background-image: linear-gradient(90deg, #d4af37, #fff8dc, #d4af37);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: brilloDorado 3s linear infinite;
     }
 
-    @keyframes deslizar {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .titulo-dorado::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-      animation: brillo 2s ease-out 1.5s forwards;
-    }
-
-    @keyframes brillo {
-      to {
-        left: 100%;
-      }
+    @keyframes brilloDorado {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
     }
 
     .nav ul {
@@ -91,6 +52,7 @@
       list-style: none;
       margin: 20px 0;
       padding: 0;
+      flex-wrap: wrap;
     }
 
     .nav ul li a {
@@ -100,7 +62,6 @@
       color: #00cfff;
       border: 2px solid #00cfff;
       border-radius: 6px;
-      background-color: transparent;
       transition: all 0.3s ease;
     }
 
@@ -140,13 +101,10 @@
     .carousel-track img {
       width: 100%;
       height: auto;
-      max-height: 200px;
+      max-height: 180px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease-out forwards;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
@@ -155,55 +113,67 @@
       box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
     }
 
-    .carousel-track img:nth-child(1) { animation-delay: 0.2s; }
-    .carousel-track img:nth-child(2) { animation-delay: 0.4s; }
-    .carousel-track img:nth-child(3) { animation-delay: 0.6s; }
-    .carousel-track img:nth-child(4) { animation-delay: 0.8s; }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     .contacto {
       text-align: center;
-      padding: 20px 10px;
+      padding: 40px 20px;
     }
 
     .contacto h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
       color: #00cfff;
-      margin-bottom: 10px;
+    }
+
+    .botones-contacto {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .botones-contacto a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      min-width: 160px;
+      height: 48px;
+      box-sizing: border-box;
+      color: white;
+      transition: background-color 0.3s ease;
     }
 
     .btn-whatsapp {
-      display: inline-block;
       background-color: #25D366;
-      color: #fff;
-      padding: 10px 20px;
-      margin: 10px 0;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
+    }
+
+    .btn-instagram {
+      background-color: #E1306C;
     }
 
     .mensaje-final {
-      color:#888;
+      font-size: 16px;
+      color: #555;
+      margin-top: 20px;
     }
 
     footer {
       text-align: center;
-      padding: 15px 0;
-      background-color: #f5f0e6;
-      font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid #d4af37;
+      margin-top: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: #777;
     }
 
     @media screen and (max-width: 600px) {
       .titulo-dorado {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
       .hero h2 {
@@ -216,6 +186,13 @@
 
       .carousel-track img {
         max-height: 160px;
+      }
+
+      .botones-contacto a {
+        font-size: 1rem;
+        padding: 10px 20px;
+        min-width: 140px;
+        height: auto;
       }
     }
   </style>
@@ -241,92 +218,32 @@
 
     <section class="galeria">
       <h2>Galería</h2>
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="img/anillo.jpg" alt="Anillo" loading="lazy">
-          <img src="img/cadena.jpg" alt="Cadena" loading="lazy">
-          <img src="img/aro.jpg" alt="Aros" loading="lazy">
-          <img src="img/medalla.jpg" alt="Medalla" loading="lazy">
-        </div>
+      <div class="carousel-track">
+        <img src="img/anillo.jpg" alt="Anillo" loading="lazy">
+        <img src="img/cadena.jpg" alt="Cadena" loading="lazy">
+        <img src="img/aro.jpg" alt="Aros" loading="lazy">
+        <img src="img/medalla.jpg" alt="Medalla" loading="lazy">
       </div>
     </section>
 
-  
-    
-<section class="contacto" style="padding: 40px 20px; text-align: center;">
-  <h2 style="font-size: 32px; margin-bottom: 30px;">Redes sociales</h2>
+    <section class="contacto">
+      <h2>Redes sociales</h2>
+      <div class="botones-contacto">
+        <a class="btn-whatsapp" href="https://wa.me/56930324713?text=Hola%2C%20quiero%20saber%20más%20" target="_blank" rel="noopener">Whatsapp</a>
+        <a class="btn-instagram" href="https://www.instagram.com/joyas_ruben_s/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <p class="mensaje-final">También disponible al +56 9 3032 4713</p>
+    </section>
+  </main>
 
-<!-- Contenedor de botones alineados -->
-<div style="
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-">
-  <!-- Botón WhatsApp -->
-  <a href="https://wa.me/56930324713?text=Hola%2C%20quiero%20saber%20más%20"
-     target="_blank" rel="noopener"
-     style="
-       display: inline-flex;
-       align-items: center;
-       justify-content: center;
-       background-color: #25D366;
-       color: white;
-       font-family: 'Cormorant Garamond', serif;
-       font-size: 18px;
-       font-weight: bold;
-       text-decoration: none;
-       padding: 12px 24px;
-       border-radius: 30px;
-       min-width: 160px;
-       height: 48px;
-       box-sizing: border-box;
-       transition: background-color 0.3s ease;
-     ">
-    Whatsapp
-  </a>
+  <footer>
+    <small>&copy; 2025 Joyería Ruben’s. Todos los derechos reservados.</small>
+  </footer>
 
-  <!-- Botón Instagram -->
-  <a href="https://www.instagram.com/joyas_ruben_s/"
-     target="_blank" rel="noopener"
-     style="
-       display: inline-flex;
-       align-items: center;
-       justify-content: center;
-       background-color: #E1306C;
-       color: white;
-       font-family: 'Cormorant Garamond', serif;
-       font-size: 18px;
-       font-weight: bold;
-       text-decoration: none;
-       padding: 12px 24px;
-       border-radius: 30px;
-       min-width: 160px;
-       height: 48px;
-       box-sizing: border-box;
-       transition: background-color 0.3s ease;
-     ">
-    Instagram
-  </a>
-</div>
-
-
-
-  <!-- Teléfono adicional -->
-  <p class="mensaje-final" style="margin-top: 20px; font-size: 16px; color: #555;">
-    También disponible al +56 9 3032 4713
-  </p>
-</section>
-
-<!-- Footer -->
-<footer style="text-align: center; margin-top: 40px; font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #777;">
-  <small>&copy; 2025 Joyería Ruben’s. Todos los derechos reservados.</small>
-</footer>
-
-<!-- Script personalizado -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("Joyería Ruben’s cargada correctamente ✨");
-  });
-</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Joyería Ruben’s cargada correctamente ✨");
+    });
+  </script>
+</body>
+</html>
