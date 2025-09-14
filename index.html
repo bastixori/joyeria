@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Joyería Ruben’s</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diseño artesanal en plata y acero inoxidable. Grabados, hechuras y piezas únicas con pasión.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      padding: 0 15px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #111;
+      border-bottom: 1px solid #333;
+    }
+
+    .titulo-dorado {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #d4af37;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #f0f0f0;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav a:hover {
+      background-color: #d4af37;
+      color: #000;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .hero h2 {
+      font-size: 1.4rem;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    .galeria {
+      padding: 20px 0;
+    }
+
+    .galeria h2 {
+      color: #d4af37;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .carousel-track {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .carousel-track img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .carousel-track img:nth-child(1) { animation-delay: 0.2s; }
+    .carousel-track img:nth-child(2) { animation-delay: 0.4s; }
+    .carousel-track img:nth-child(3) { animation-delay: 0.6s; }
+    .carousel-track img:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contacto {
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .contacto h2 {
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #aaa;
+      border-top: 1px solid #333;
+    }
+
+    @media screen and (max-width: 600px) {
+      .titulo-dorado {
+        font-size: 1.6rem;
+      }
+
+      .hero h2 {
+        font-size: 1.2rem;
+      }
+
+      .carousel-track {
+        grid-template-columns: 1fr;
+      }
+
+      .carousel-track img {
+        max-height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="titulo-dorado">Joyería Ruben’s</h1>
+    <nav class="nav">
+      <ul>
+        <li><a href="portada.html">Inicio</a></li>
+        <li><a href="https://www.deltajoyas.cl/catalogo.php?catalogo=master2004" target="_blank" rel="noopener">Galería</a></li>
+        <li><a href="https://wa.me/56930324713?text=Hola%2C%20quiero%20saber%20más%20sobre%20las%20joyas" target="_blank" rel="noopener">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Taller de Joyerías</h2>
+      <p>Grabados, hechuras, pulidos, limpiezas y lapidados con pasión y detalle. Cada pieza es única, como quien la lleva.</p>
+    </section>
+
+    <section class="galeria">
+      <h2>Galería</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="img/anillo.jpg" alt="Anillo" loading="lazy">
+          <img src="img/cadena.jpg" alt="Cadena" loading="lazy">
+          <img src="img/aro.jpg" alt="Aros" loading="lazy">
+          <img src="img/medalla.jpg" alt="Medalla" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+  <section class="contacto">
+  <h2>Contacto</h2>
+  <p>Escríbenos por 
+    <a href="https://wa.me/56930324713?text=Hola%2C%20quiero%20saber%20más%20"
+       style="color: #25D366; font-weight: bold; text-decoration: none;">
+       WhatsApp
+    </a>
+  </p>
+
+  <a class="btn-whatsapp"
+     href="https://wa.me/56930324713?text=Hola%2C%20quiero%20saber%20más%20"
+     target="_blank" rel="noopener">
+     💬 Escríbenos
+  </a>
+
+  <p class="mensaje-final">También disponible al +56 9 3032 4713</p>
+</section>
+
+  <footer>
+    <small>&copy; 2025 Joyería Ruben’s. Todos los derechos reservados.</small>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Joyería Ruben’s cargada correctamente ✨");
+    });
+  </script>
+</body>
+</html>
