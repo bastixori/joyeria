@@ -36,13 +36,35 @@
       color: #d4af37;
     }
 
-    .nav ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 15px;
-    }
+  /* Estilo general del nav */
+.nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* espacio entre botones */
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+/* Estilo de los enlaces */
+.nav ul li a {
+  font-size: 1.3rem;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: gold;
+  border: 2px solid gold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+/* Hover dorado brillante */
+.nav ul li a:hover {
+  background-color: gold;
+  color: black;
+  box-shadow: 0 0 10px gold;
+}
+
 
     .nav a {
       text-decoration: none;
