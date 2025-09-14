@@ -109,18 +109,23 @@
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 10px;
     }
+.carousel-track img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-    .carousel-track img {
-      width: 100%;
-      height: auto;
-      max-height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease-out forwards;
-    }
+.carousel-track img:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4); /* dorado elegante */
+}
 
     .carousel-track img:nth-child(1) { animation-delay: 0.2s; }
     .carousel-track img:nth-child(2) { animation-delay: 0.4s; }
