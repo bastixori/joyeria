@@ -8,6 +8,11 @@
   <style>
     body {
       margin: 0;
+      background-image: url('img/fondo.jpg'); /* Imagen única */
+      background-repeat: no-repeat;
+      background-size: 100% 100%; /* Se ajusta al ancho y alto exacto */
+      background-position: center center;
+      background-attachment: fixed;
       background-color: #ffffff;
       color: #000000;
       font-family: 'Playfair Display', serif;
@@ -20,6 +25,14 @@
       padding: 0 5vw;
     }
 
+    .contenedor {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+
     h1 {
       font-size: 3.8em;
       margin-bottom: 40px;
@@ -29,7 +42,6 @@
       -webkit-text-fill-color: transparent;
       animation: deslizar 1.5s ease-out forwards;
       opacity: 0;
-      position: relative;
     }
 
     @keyframes deslizar {
@@ -47,7 +59,7 @@
       border-radius: 30px;
       text-decoration: none;
       box-shadow: 0 0 10px #bfa335;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; 
     }
 
     a.boton-entrar:hover {
@@ -66,13 +78,19 @@
         font-size: 1em;
         padding: 12px 24px;
       }
+
+      .contenedor {
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Joyería Ruben’s</h1>
-  <a href="index.html" class="boton-entrar">Entrar</a>
+  <div class="contenedor">
+    <h1>Joyería Ruben’s</h1>
+    <a href="index.html" class="boton-entrar">Entrar</a>
+  </div>
 
 </body>
 </html>
