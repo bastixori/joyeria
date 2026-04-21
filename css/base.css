@@ -1,0 +1,187 @@
+/* ============================================================
+   BASE.CSS — Design System · Joyería Ruben's
+   Variables, reset, tipografía y utilidades globales
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  /* Colores - Modo Claro Moderno */
+  --color-bg:           #ffffff;
+  --color-surface:      #f9f9f9;
+  --color-surface-2:    #f0f0f0;
+  --color-surface-3:    #e4e4e4;
+
+  --color-gold:         #b59032;
+  --color-gold-light:   #cfae53;
+  --color-gold-dim:     rgba(181, 144, 50, 0.15);
+  --color-gold-border:  rgba(181, 144, 50, 0.25);
+
+  --color-text:         #1a1a1a;
+  --color-text-muted:   #555555;
+  --color-text-subtle:  #777777;
+
+  --color-white:        #ffffff;
+  --color-overlay:      rgba(255, 255, 255, 0.85);
+
+  /* Tipografía */
+  --font-heading:       'Cormorant Garamond', Georgia, serif;
+  --font-body:          'Inter', system-ui, sans-serif;
+
+  --fs-xs:    0.75rem;
+  --fs-sm:    0.875rem;
+  --fs-base:  1rem;
+  --fs-md:    1.125rem;
+  --fs-lg:    1.5rem;
+  --fs-xl:    2rem;
+  --fs-2xl:   2.8rem;
+  --fs-3xl:   4rem;
+  --fs-4xl:   5.5rem;
+
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+
+  /* Espaciado */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* Bordes */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-full: 9999px;
+
+  /* Sombras */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md:   0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg:   0 20px 60px rgba(0, 0, 0, 0.15);
+  --shadow-gold: 0 0 30px rgba(181, 144, 50, 0.15);
+
+  /* Transiciones */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.4, 0, 1, 1);
+  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   150ms;
+  --dur-mid:    300ms;
+  --dur-slow:   600ms;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94)), url('../img/fondo.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+}
+
+/* ── Utilidades globales ───────────────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Divisor dorado */
+.divider-gold {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: var(--space-lg) auto;
+}
+
+/* Línea de oro animada (borde inferior de secciones) */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--color-gold-border) 20%,
+    var(--color-gold) 50%,
+    var(--color-gold-border) 80%,
+    transparent 100%
+  );
+}
+
+/* ── Animaciones de entrada (IntersectionObserver) ─────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Retraso escalonado para grillas */
+.fade-up:nth-child(1) { transition-delay: 0ms; }
+.fade-up:nth-child(2) { transition-delay: 60ms; }
+.fade-up:nth-child(3) { transition-delay: 120ms; }
+.fade-up:nth-child(4) { transition-delay: 180ms; }
+.fade-up:nth-child(5) { transition-delay: 240ms; }
+.fade-up:nth-child(6) { transition-delay: 300ms; }
+.fade-up:nth-child(7) { transition-delay: 360ms; }
+.fade-up:nth-child(8) { transition-delay: 420ms; }

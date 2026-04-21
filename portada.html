@@ -2,95 +2,116 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Joyería Ruben’s</title>
+  <title>Joyería Ruben's — Portada</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/base.css">
   <style>
-    body {
+    body, html {
       margin: 0;
-      background-image: url('img/fondo.jpg'); /* Imagen única */
-      background-repeat: no-repeat;
-      background-size: 100% 100%; /* Se ajusta al ancho y alto exacto */
-      background-position: center center;
-      background-attachment: fixed;
-      background-color: #ffffff;
-      color: #000000;
-      font-family: 'Playfair Display', serif;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Evita scroll en la portada */
+    }
+    .landing {
+      position: relative;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      justify-content: center;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('img/fondo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: var(--space-lg);
+    }
+    .landing__card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: clamp(var(--space-2xl), 5vw, 60px) clamp(var(--space-xl), 5vw, 50px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
       text-align: center;
-      padding: 0 5vw;
-    }
-
-    .contenedor {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 3.8em;
-      margin-bottom: 40px;
-      background: linear-gradient(90deg, #000000, #b9ad00);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: deslizar 1.5s ease-out forwards;
+      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       opacity: 0;
+      transform: translateY(40px);
+      max-width: 500px;
+      width: 100%;
     }
-
-    @keyframes deslizar {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-
-    a.boton-entrar {
+    .landing__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-medium);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-md);
+    }
+    .landing__eyebrow::before,
+    .landing__eyebrow::after {
+      content: '';
       display: inline-block;
-      padding: 14px 32px;
-      font-size: 1.1em;
-      font-weight: bold;
-      color: #fff;
-      background-color: #000000;
-      border-radius: 30px;
+      width: 20px;
+      height: 1px;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+    .landing__title {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-style: italic;
+      font-weight: var(--fw-bold);
+      color: var(--color-text);
+      line-height: 1.1;
+      margin-bottom: var(--space-2xl);
+    }
+    .btn-entrar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 48px;
+      font-size: var(--fs-base);
+      font-weight: var(--fw-bold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+      border-radius: var(--radius-full);
+      border: none;
       text-decoration: none;
-      box-shadow: 0 0 10px #bfa335;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; 
+      box-shadow: 0 8px 24px rgba(181, 144, 50, 0.25);
+      transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
     }
-
-    a.boton-entrar:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #bfa335;
-      background-color: #000000;
-    }
-
-    @media screen and (max-width: 480px) {
-      h1 {
-        font-size: 2.4em;
-        margin-bottom: 30px;
-      }
-
-      a.boton-entrar {
-        font-size: 1em;
-        padding: 12px 24px;
-      }
-
-      .contenedor {
-        padding: 30px 20px;
-      }
+    .btn-entrar:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(181, 144, 50, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <div class="contenedor">
-    <h1>Joyería Ruben’s</h1>
-    <a href="index.html" class="boton-entrar">Entrar</a>
-  </div>
+  <main class="landing">
+    <div class="landing__card">
+      <p class="landing__eyebrow">Taller Artesanal</p>
+      <h1 class="landing__title">Joyería Ruben's</h1>
+      <a href="index.html" class="btn-entrar">Entrar</a>
+    </div>
+  </main>
 
 </body>
 </html>
