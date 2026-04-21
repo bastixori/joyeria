@@ -148,10 +148,13 @@
   line-height: 1.75;
 }
 
-/* ── Sección galería ───────────────────────────────────────── */
 .galeria {
   padding: var(--space-2xl) clamp(var(--space-lg), 5vw, var(--space-3xl));
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
   overflow: hidden;
+  position: relative;
 }
 
 .galeria__header {
@@ -656,7 +659,6 @@
   color: var(--color-text-subtle);
 }
 
-/* ── Footer ────────────────────────────────────────────────── */
 .site-footer {
   padding: var(--space-xl) clamp(var(--space-lg), 5vw, var(--space-3xl));
   border-top: 1px solid var(--color-surface-3);
@@ -664,6 +666,10 @@
   font-size: var(--fs-xs);
   color: var(--color-text-subtle);
   letter-spacing: 0.05em;
+}
+
+.site-footer p {
+  margin: 0;
 }
 
 /* ── Responsive ────────────────────────────────────────────── */
@@ -709,7 +715,8 @@
   }
 
   .producto-card {
-    width: 220px;
+    flex: 0 0 85vw;
+    max-width: 320px;
   }
   .productos-grid {
     gap: var(--space-md);
