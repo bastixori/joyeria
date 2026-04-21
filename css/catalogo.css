@@ -151,6 +151,7 @@
 /* ── Sección galería ───────────────────────────────────────── */
 .galeria {
   padding: var(--space-2xl) clamp(var(--space-lg), 5vw, var(--space-3xl));
+  overflow: hidden;
 }
 
 .galeria__header {
