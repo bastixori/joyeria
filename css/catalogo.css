@@ -212,6 +212,14 @@
 }
 
 /* ── Grid de productos (Carrusel Infinito) ───────────────── */
+.carousel-wrapper {
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  touch-action: pan-y; /* Permite scroll vertical pero bloquea el horizontal en celulares */
+  position: relative;
+}
+
 .productos-grid {
   display: flex;
   gap: var(--space-lg);
