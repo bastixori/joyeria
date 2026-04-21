@@ -81,25 +81,27 @@
 .nav-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  padding: 4px;
-  background: none;
+  justify-content: space-between;
+  width: 44px;
+  height: 34px;
+  background: transparent;
   border: none;
   cursor: pointer;
+  z-index: 1000;
+  padding: 4px;
 }
 
 .nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 1.5px;
-  background: var(--color-text);
-  border-radius: 2px;
-  transition: transform var(--dur-mid) var(--ease-out), opacity var(--dur-mid);
+  width: 100%;
+  height: 3px;
+  background: var(--color-gold);
+  border-radius: 3px;
+  transition: all var(--dur-fast) var(--ease-out);
 }
 
-.nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
-.nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-12px) rotate(-45deg); }
 
 /* ── Hero ──────────────────────────────────────────────────── */
 .hero {
@@ -212,30 +214,34 @@
   border-color: transparent;
 }
 
-/* ── Grid de productos (Carrusel Infinito) ───────────────── */
+/* ── Grid de productos (Carrusel) ───────────────── */
 .carousel-wrapper {
   width: 100%;
   max-width: 100vw;
   overflow: hidden;
-  touch-action: pan-y; /* Permite scroll vertical pero bloquea el horizontal en celulares */
   position: relative;
 }
 
 .productos-grid {
   display: flex;
   gap: var(--space-lg);
-  overflow-x: hidden;
+  overflow-x: auto;
   padding-bottom: var(--space-lg);
-  width: max-content;
-  animation: scrollCarousel 30s linear infinite;
-}
-.productos-grid:hover {
-  animation-play-state: paused;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto; /* Changed from smooth to avoid fighting JS */
+  /* Ocultar scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
 }
 
-@keyframes scrollCarousel {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - (var(--space-lg) / 2))); }
+.productos-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.productos-grid:active {
+  cursor: grabbing;
 }
 
 /* ── Card ──────────────────────────────────────────────────── */

@@ -299,22 +299,8 @@ document.getElementById('navCotizar')?.addEventListener('click', (e) => {
 });
 
 /* ══════════════════════════════════════════════════════════════
-   MENÚ HAMBURGUESA
+   (Menu logic moved to DOMContentLoaded)
 ══════════════════════════════════════════════════════════════ */
-
-navToggle?.addEventListener('click', () => {
-  const abierto = siteNav.classList.toggle('abierto');
-  navToggle.classList.toggle('active', abierto);
-  navToggle.setAttribute('aria-expanded', abierto);
-});
-
-/* Cerrar menú al hacer click en un link */
-siteNav?.querySelectorAll('a').forEach((a) => {
-  a.addEventListener('click', () => {
-    siteNav.classList.remove('abierto');
-    navToggle?.classList.remove('active');
-  });
-});
 
 /* ══════════════════════════════════════════════════════════════
    ANIMACIONES (IntersectionObserver)
@@ -369,5 +355,74 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.classList.toggle('active');
       siteNav.classList.toggle('abierto');
     });
+
+    // Cerrar menú al hacer click en un link
+    siteNav.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        siteNav.classList.remove('abierto');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Mouse drag to scroll for carousel
+  const slider = document.getElementById('productosGrid');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let autoScrollInterval;
+
+  function startAutoScroll() {
+    stopAutoScroll(); // Prevenir múltiples intervalos
+    autoScrollInterval = setInterval(() => {
+      if (!isDown && slider) {
+        slider.scrollLeft += 1;
+        // Si llega al final, volver al principio
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1) {
+          slider.scrollLeft = 0;
+        }
+      }
+    }, 20); // Velocidad: cada 20ms se mueve 1px
+  }
+
+  function stopAutoScroll() {
+    if (autoScrollInterval) clearInterval(autoScrollInterval);
+  }
+
+  if (slider) {
+    // Iniciar el auto-scroll
+    startAutoScroll();
+
+    // Detener al hacer hover con el mouse
+    slider.addEventListener('mouseenter', stopAutoScroll);
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      startAutoScroll();
+    });
+
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      stopAutoScroll();
+    });
+    
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      startAutoScroll();
+    });
+    
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // Velocidad de arrastre
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Soporte para táctil: detener auto-scroll al tocar
+    slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    slider.addEventListener('touchend', startAutoScroll, { passive: true });
   }
 });
