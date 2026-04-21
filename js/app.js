@@ -358,4 +358,16 @@ function capitalizar(str) {
 document.addEventListener('DOMContentLoaded', () => {
   renderProductos();
   observarAnimaciones();
+
+  // Mobile menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const siteNav = document.getElementById('siteNav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      navToggle.classList.toggle('active');
+      siteNav.classList.toggle('abierto');
+    });
+  }
 });
